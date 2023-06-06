@@ -739,6 +739,10 @@ After=network.target
 Type = simple
 ExecStart = /usr/bin/python3 /opt/mtprotoproxy/mtprotoproxy.py
 StartLimitBurst=0
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=1s
 
 [Install]
 WantedBy = multi-user.target" >mtprotoproxy.service
